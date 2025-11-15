@@ -1,5 +1,5 @@
 {
-  "homepage": "https://TranscendedFox.github.com/miloni-school",
+  "homepage": "https://TranscendedFox.github.io/miloni-school",
   "name": "miloni-school",
   "version": "0.1.0",
   "private": true,
@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "framer-motion": "^12.23.24",
@@ -24,6 +24,7 @@
     "@types/react-dom": "^19.2.3",
     "eslint": "^9",
     "eslint-config-next": "16.0.3",
+    "gh-pages": "^6.3.0",
     "tailwindcss": "^4",
     "typescript": "^5.9.3"
   }
