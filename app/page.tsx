@@ -23,9 +23,12 @@ export default function Home() {
     if (!wrapper) return;
 
     const screenWidth = window.innerWidth;
-    const distance = screenWidth + wrapper.offsetWidth; // full traversal
+    const startPosition = -wrapper.offsetWidth; // Start off-screen on the left
+    const endPosition = screenWidth; // End off-screen on the right
+    const distance = endPosition - startPosition; // Total distance to travel
     const duration = distance / speed; // seconds
 
+    wrapper.style.setProperty("--start-position", `${startPosition}px`);
     wrapper.style.setProperty("--distance", `${distance}px`);
     wrapper.style.animationDuration = `${duration}s`;
   }, []);
@@ -42,7 +45,19 @@ const faqData = [
     {
       question: 'האתר עדיין בבניה?',
       answer: 'כן ;)',
-    }
+    },
+    {
+      question: 'הא@@@@@ @@@@@@@@@ @@@@@ @@@@@@ @@@@@@ @@@@@ @@@@@@@@@@ @@@@@ @@@@',
+      answer: 'כן ;) @@@@@ @@@@@@@ @@@@@@@@@ @@@@@@@@@@ @@@@@@@@@ @@@@@@ @@@@@ @@@@@@ @@@@@@@ @@@@@@@ @@@ @@',
+    },
+    {
+      question: 'האתר עדיין בבניה?',
+      answer: 'כן ;)',
+    },
+    {
+      question: 'האתר עדיין בבניה?',
+      answer: 'כן ;)',
+    },
   ];
 
   const gamesButtons = [
@@ -64,9 +79,7 @@ const faqData = [
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   // Function to handle click on an FAQ item
-  const handleFaqClick = (index: number) => {
-    // If the clicked item is already open, close it (set to null)
-    // Otherwise, open the clicked item
+  const handleFaqClick = (index: number) => {    
     setOpenIndex(index === openIndex ? null : index);
   };
 
@@ -83,26 +96,30 @@ const faqData = [
         </div>
       </nav>
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center px-6 py-20" style={{ background: `linear-gradient(to bottom, ${colors.background}, ${colors.card})` }}>       
-                        
-        <div className="max-w-4xl text-center">            
-          <h2 className="text-5xl font-bold mb-6" style={{ color: colors.primary }}>
-           חולמים לפתח משחק❓
-          </h2>
-          <p className="text-xl md:text-4xl mb-8" style={{ color: colors.text }}>
-            לימוד אנימציה ופיתוח משחקים בצורה מעשית ויצירתית
-          </p>
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="px-8 py-4 rounded-lg text-white font-bold text-lg hover:opacity-90 transition-opacity"
-            style={{ backgroundColor: colors.accent }}
-          >
-            התחל עכשיו
-          </button>
+      <section id="home" className="min-h-screenpx-6 py-20" style={{ background: `linear-gradient(to bottom, ${colors.background}, ${colors.card})` }}>       
+        <div className="flex items-center justify-center ">   
+           <div className="max-w-4xl text-center">            
+              <h2 className="text-5xl font-bold mb-6" style={{ color: colors.primary }}>
+              חולמים לפתח משחק❓
+              </h2>
+              <p className="text-xl md:text-4xl mb-8 ml-2 mr-2" style={{ color: colors.text }}>
+                לימוד אנימציה ופיתוח משחקים בצורה מעשית ויצירתית
+              </p>
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="px-8 py-4 rounded-lg text-white font-bold text-lg hover:opacity-90 transition-opacity"
+                style={{ backgroundColor: colors.accent }}
+              >
+                התחל עכשיו
+              </button>
+            </div>           
+            
         </div>
-        <div ref={wrapperRef} className="run-wrapper">
-          <div className="boy-run-animation md:opacity-100 pointer-events-none scale-[2]" />
+
+        <div ref={wrapperRef} className="run-wrapper">                    
+            <div className="boy-run-animation md:opacity-100 pointer-events-none scale-[2]" />
         </div>
+        
       </section>
 
       {/* About Section */}

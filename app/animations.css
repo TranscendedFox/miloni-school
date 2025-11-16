@@ -48,12 +48,8 @@
   100% { background-position: 0px   0px; }
 }
 
-@keyframes boy-move {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(120vw); } 
-}
-
 .boy-run-animation {
+  position: relative;
   width: 170px;
   height: 170px;
   background-image: url('/images/running-boy.png');
@@ -63,16 +59,14 @@
 }
 
 .run-wrapper {
-  position: absolute;       /* fixes it to viewport */
-  bottom: 20px;          /* distance from bottom */
-  left: 0;
+  position: relative;      /* stays on top, does not affect layout */
   animation-name: boy-move;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  pointer-events: none;
+  pointer-events: none; /* so it doesn't block clicks */
 }
 
 @keyframes boy-move {
-  0%   { transform: translateX(-170px); }
+  0%   { transform: translateX(var(--start-position)); }
   100% { transform: translateX(var(--distance)); }
 }
