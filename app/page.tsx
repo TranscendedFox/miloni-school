@@ -1,6 +1,5 @@
 "use client";
 
-import { color } from "framer-motion";
 import React, { useState, useEffect, useRef } from "react";
     
 const colors = {
@@ -15,6 +14,7 @@ const colors = {
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
+  const [menuOpen, setMenuOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -33,6 +33,30 @@ export default function Home() {
     wrapper.style.animationDuration = `${duration}s`;
   }, []);
 
+  useEffect(() => {
+  const sections = ["home", "about", "services", "syllabus", "faq" , "contact"];
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    },
+    {
+      threshold: 0.6, // section must be mostly visible to count
+    }
+  );
+
+  sections.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+
+  return () => observer.disconnect();
+}, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -43,20 +67,24 @@ export default function Home() {
   
 const faqData = [
     {
-      question: 'האתר עדיין בבניה?',
-      answer: 'כן ;)',
+      question: 'צריך מחשב חזק?',
+      answer: "לא צריך מחשב מפלצתי. מחשב רגיל מספיק כדי להתחיל. ואם יש לך מחשב גיימינג ברוב המקרים זה יותר ממספיק.",
     },
     {
-      question: 'הא@@@@@ @@@@@@@@@ @@@@@ @@@@@@ @@@@@@ @@@@@ @@@@@@@@@@ @@@@@ @@@@',
-      answer: 'כן ;) @@@@@ @@@@@@@ @@@@@@@@@ @@@@@@@@@@ @@@@@@@@@ @@@@@@ @@@@@ @@@@@@ @@@@@@@ @@@@@@@ @@@ @@',
+      question: 'התוכנות עולות כסף?',
+      answer: 'לא! אנחנו נשתמש בתוכנות שההורדה שלהן היא חוקית וחינמית.',
     },
     {
-      question: 'האתר עדיין בבניה?',
-      answer: 'כן ;)',
+      question: 'לאיזה גיל זה מיועד?',
+      answer: 'הייתי רוצה ללמד כל מי שרוצה ללמוד אבל אני חושב שכדאי לגילאים מעל 13.',
     },
     {
-      question: 'האתר עדיין בבניה?',
-      answer: 'כן ;)',
+      question: 'איפה לומדים את הקורס?',
+      answer: 'מכל מקום שיש לכם בו מחשב - כל השיעורים מתקיימים אונליין דרך פלטפורמות כמו דיסקורד או זום, כך שניתן ללמוד ישירות מהבית.',
+    },
+    {
+      question: 'איך לשכנע את אמא?',
+      answer: 'אם אתם מתחת לגיל 18: "אמא תקשיבי, קודם כל לומדים קוד זה כבר מעולה, יהיה המון תרגול באנגלית וגם מתמטיקה, פיזיקה ואם צריך - אקדיש את המשחק בשבילך."',
     },
   ];
 
@@ -103,6 +131,15 @@ const faqData = [
     }
   ]
 
+const sections = [
+  { id: "home", label: "ראשי" },
+  { id: "about", label: "מי אני" },
+  { id: "services", label: "שירות" },
+  { id: "syllabus", label: "מה לומדים" },
+  { id: "faq", label: "שאלות נפוצות" },
+  { id: "contact", label: "צור קשר" },
+]
+
   // State to manage which FAQ item is open
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -116,13 +153,54 @@ const faqData = [
       
       {/* Sticky Navigation */}
       <nav className="sticky top-0 z-50 bg-black shadow-md" dir="ltr">
-        <div className="max-w-6xl mx-auto px-6 py-4">
+        <div className="max-w-6xl mx-auto px-6 py-2">
           <div className="flex justify-between items-center">
-            <img src='./images/SmallIcon.png' className="w-10 h-10 "/>
-            
+
+            {/* Logo */}
+            <img src="./images/SmallIcon.png" className="w-10 h-10" />
+
+            {/* Dropdown Menu */}
+            <div className="relative">
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+                style={{ color: colors.secondary }}
+                className="text-sm font-medium"
+              >
+                {/* Hamburger icon */}
+
+                {sections.find((s) => s.id === activeSection)?.label}
+                <span className="text-xl text-white"> ☰ </span>
+              </button>
+
+
+              {menuOpen && (
+                <div className="absolute right-0 mt-2 bg-black rounded shadow-lg w-40 py-2 text-right z-50">
+                  {sections.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => {
+                        scrollToSection(item.id);
+                        setMenuOpen(false);
+                      }}
+                      className="w-full text-black px-4 py-2 hover:bg-gray-100 text-sm"
+                      style={{
+                        color:
+                          activeSection === item.id
+                            ? colors.secondary
+                            : "white",
+                      }}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
           </div>
         </div>
       </nav>
+
       {/* Hero Section */}
       <section id="home" className="min-h-screen px-6 flex flex-col justify-center" style={{ background: `linear-gradient(to bottom, ${colors.background}, ${colors.card})` }}>       
         <div className="flex items-center justify-center ">   
@@ -360,10 +438,10 @@ const faqData = [
       <section id="contact" className="py-20 px-6 relative" style={{ background: `linear-gradient(to bottom, ${colors.background} 50%, ${colors.secondaryBackground} 200%)`  }}>
         <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-8" style={{ color: colors.primary }}>
-            בואו נתחיל
+            רוצים להתחיל לבנות משחקים?
         </h2>
         <p className="text-xl mb-8" style={{ color: colors.text }}>
-            מעוניינים ללמוד אנימציה או פיתוח משחקים? בואו נדבר!
+            תשלחו לי הודעה!
         </p>
         <a
           href="https://wa.me/9720545990093"
