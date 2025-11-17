@@ -255,7 +255,15 @@ const faqData = [
             מה אפשר ללמוד❓
           </h2>
           <div className="grid md:grid-cols-2 gap-18">         
-
+            <div className="gameContainer">
+              <div className="gameButton" style={{ color: colors.text} }>
+                <span className="text-lg leading-relaxed mb-4">
+                  <p className="mb-5">
+                   הכנתי עבורכם רשימה של חלק מהדברים שאני יכול ללמד אתכם בפיתוח משחקים ואנימציה.
+                  </p>
+                </span>
+              </div>
+            </div>
             {learningCards.map((item, index)=>(
               <div key={index} className="rounded-xl p-8 transition-shadow" style={{ background: `linear-gradient(to bottom, ${colors.background}, ${colors.secondaryBackground})` }}>
                 <li className="flex items-start gap-2 justify-center">
