@@ -74,6 +74,34 @@ const faqData = [
       barcode: '/images/QBBarcode.png'
     }
   ]
+ 
+
+  const learningCards = [
+    {
+      symbol:'🎮',
+      header : 'פיתוח משחקים',
+      subjects: [
+            { title: "C#", description: "יסודות השפה וכתיבת קוד למשחקים." },
+            { title: "Unity", description: "מנוע משחקים." },
+            { title: "Rigidbody ופיזיקה", description: "תנועה, התנגשויות, כוחות, טריגרים." },
+            { title: "UI/UX למשחקים", description: "תפריטים, HUD, ממשק נוח וברור לשחקן." },
+            { title: "אפקטים (VFX) ושיידרים", description: "חלקיקים, פיצוצים, אש, עשן, סטייליזציה." },
+            { title: "פיתוח למובייל", description: "שליטת מגע, אופטימיזציה, גדלי מסך ובנייה." },
+      ]
+    },
+    {
+      symbol:'🎬',
+      header : 'אנימציה',
+      subjects: [
+            { title: "Blender", description: "תוכנה ליצירה בתלת־ממד." },
+            { title: "מודלינג", description: "בניה של חפצים, דמויות, עולמות." },
+            { title: "טקסטורות", description: "צביעה ומרקם של המודל." },
+            { title: "פריסת UV", description: "פריסה דו מימדית של המודל והכנה לטקסטורות." },
+            { title: "Rigging", description: "בניית שלד למודל, לאפשרות הנפשה." },
+            { title: "הנפשה", description: "יצירת תנועה: הליכה, ריצה, הבעות פנים וכל מה שהופך דמות לחיה." },
+          ]
+    }
+  ]
 
   // State to manage which FAQ item is open
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -96,21 +124,23 @@ const faqData = [
         </div>
       </nav>
       {/* Hero Section */}
-      <section id="home" className="min-h-screenpx-6 py-20" style={{ background: `linear-gradient(to bottom, ${colors.background}, ${colors.card})` }}>       
+      <section id="home" className="min-h-screen px-6 flex flex-col justify-center" style={{ background: `linear-gradient(to bottom, ${colors.background}, ${colors.card})` }}>       
         <div className="flex items-center justify-center ">   
            <div className="max-w-4xl text-center">            
               <h2 className="text-5xl font-bold mb-6" style={{ color: colors.primary }}>
               חולמים לפתח משחק❓
               </h2>
-              <p className="text-xl md:text-4xl mb-8 ml-2 mr-2" style={{ color: colors.text }}>
-                לימוד אנימציה ופיתוח משחקים בצורה מעשית ויצירתית
+              <p className="text-xl md:text-2xl mb-8 ml-2 mr-2" style={{ color: colors.text }}>
+                לא יודעים מאיפה להתחיל❓ 
+                <br></br>
+                יש לכם רעיון אבל אין לכם את הכלים להפוך אותו למשחק אמיתי❓
               </p>
               <button
-                onClick={() => scrollToSection("contact")}
+                onClick={() => scrollToSection("about")}
                 className="px-8 py-4 rounded-lg text-white font-bold text-lg hover:opacity-90 transition-opacity"
-                style={{ backgroundColor: colors.accent }}
+                style={{ backgroundColor: colors.secondaryBackground }}
               >
-                התחל עכשיו
+               הנה ההזדמנות שלכם!
               </button>
             </div>           
             
@@ -224,72 +254,31 @@ const faqData = [
           <h2 className="text-6xl font-bold mb-12 text-right" style={{ color: colors.text }}>
             מה אפשר ללמוד❓
           </h2>
-          <div className="grid md:grid-cols-2 gap-18">
-            {/* Animation Card */}
-            <div className="rounded-xl p-8 transition-shadow" style={{ background: `linear-gradient(to bottom, ${colors.background}, ${colors.secondaryBackground})` }}>
-              <li className="flex items-start gap-2 justify-center">
-                <div className="w-16 h-16 rounded-full mb-6 flex items-center justify-center text-3xl" style={{ backgroundColor: colors.text }}>
-                  🎬
-                </div>
-              </li>
-              <li className="flex items-start gap-2 justify-center">
-                  <h3 className="text-2xl font-bold mb-4 justify-center" style={{ color: colors.text }}>
-                   אנימציה
-                  </h3>
-              </li>
-              <ul className="space-y-3" style={{ color: colors.text }}>
-                <li className="flex items-start gap-2 justify-center">
-                  <span>עקרונות אנימציה יסודיים</span>
-                  <span style={{ color: colors.accent }}>✓</span>
-                </li>
-                <li className="flex items-start gap-2 justify-center">
-                  <span>תוכנות מקצועיות</span>
-                  <span style={{ color: colors.accent }}>✓</span>
-                </li>
-                <li className="flex items-start gap-2 justify-center">
-                  <span>יצירת דמויות מונפשות</span>
-                  <span style={{ color: colors.accent }}>✓</span>
-                </li>
-                <li className="flex items-start gap-2 justify-center">
-                  <span>אנימציות למשחקים</span>
-                  <span style={{ color: colors.accent }}>✓</span>
-                </li>
-              </ul>
-            </div>
+          <div className="grid md:grid-cols-2 gap-18">         
 
-            {/* Game Development Card */}
-            <div className="rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow" style={{ background: `linear-gradient(to bottom, ${colors.background}, ${colors.secondaryBackground})` }}>
-              
-              <li className="flex items-start gap-2 justify-center">
-                <div className="w-16 h-16 rounded-full mb-6 flex items-center justify-center text-3xl" style={{ backgroundColor: colors.text}}>
-                  🎮
+            {learningCards.map((item, index)=>(
+              <div key={index} className="rounded-xl p-8 transition-shadow" style={{ background: `linear-gradient(to bottom, ${colors.background}, ${colors.secondaryBackground})` }}>
+                <li className="flex items-start gap-2 justify-center">
+                <div className="w-16 h-16 rounded-full mb-6 flex items-center justify-center text-3xl" style={{ backgroundColor: colors.text }}>
+                  {item.symbol}
                 </div>
               </li>
               <li className="flex items-start gap-2 justify-center">
                   <h3 className="text-2xl font-bold mb-4 justify-center" style={{ color: colors.text }}>
-                   פיתוח משחקים
+                   {item.header}
                   </h3>
               </li>
               <ul className="space-y-3" style={{ color: colors.text }}>
-                <li className="flex items-start gap-2 justify-center">
-                  <span>תכנות למשחקים</span>
-                  <span style={{ color: colors.accent }}>✓</span>
-                </li>
-                <li className="flex items-start gap-2 justify-center">
-                  <span>עיצוב מכניקות משחק</span>
-                  <span style={{ color: colors.accent }}>✓</span>
-                </li>
-                <li className="flex items-start gap-2 justify-center">
-                  <span>Unity ו-Unreal Engine</span>
-                  <span style={{ color: colors.accent }}>✓</span>
-                </li>
-                <li className="flex items-start gap-2 justify-center">
-                  <span>פרסום משחקים</span>
-                  <span style={{ color: colors.accent }}>✓</span>
-                </li>
+                {item.subjects.map((subject, i)=>(
+                  <li key= {i} className="flex items-start gap-2 justify-right">
+                    <span style={{ color: colors.accent }}>✓</span>
+                    <span><b>{subject.title}</b> - {subject.description}</span>
+                  </li>
+                ))}                
               </ul>
-            </div>
-            </div>
+              </div>))}          
+            
+          </div>
         </div>
       </section>
 
@@ -368,14 +357,14 @@ const faqData = [
             מעוניינים ללמוד אנימציה או פיתוח משחקים? בואו נדבר!
         </p>
         <a
-            href="https://wa.me/9720545990093"
-            target="_blank"
-            rel="noopener noreferrer"
+          href="https://wa.me/9720545990093"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-8 py-4 rounded-lg text-white font-bold text-lg hover:opacity-90 transition-opacity flex items-center gap-3 mx-auto inline-flex"
+          style={{ backgroundColor: colors.accent }}
         >
-            <button className="px-8 py-4 rounded-lg text-white font-bold text-lg hover:opacity-90 transition-opacity flex items-center gap-3 mx-auto" style={{ backgroundColor: colors.accent }}>
-                <span>💬</span>
-                WhatsApp
-            </button>
+          <span>💬</span>
+          WhatsApp
         </a>
         </div>
         <img 
@@ -389,7 +378,7 @@ const faqData = [
       {/* Footer */}
       <footer className="py-8 text-center bg-black border-t">
         <p style={{ color: colors.text }}>
-          © {new Date().getFullYear()} Lumen Studio. כל הזכויות שמורות.
+          © {new Date().getFullYear()} גל מילון. כל הזכויות שמורות.
         </p>
       </footer>
     </div>
