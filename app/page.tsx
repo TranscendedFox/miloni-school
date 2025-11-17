@@ -183,6 +183,8 @@ const sections = [
                         setMenuOpen(false);
                       }}
                       className="w-full text-black px-4 py-2 hover:bg-gray-100 text-sm"
+                      onMouseEnter={e => (e.currentTarget.style.backgroundColor = colors.secondaryBackground)}
+                      onMouseLeave={e => (e.currentTarget.style.backgroundColor = "")}
                       style={{
                         color:
                           activeSection === item.id
