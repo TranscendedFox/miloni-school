@@ -288,48 +288,8 @@ const sections = [
         </div>
       </section>
 
-      {/* services Section */}
-      <section id="services" className="py-20 px-6" style={{ backgroundColor: colors.background }}>
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-6xl font-bold mb-12 text-right" style={{ color: colors.text }}>
-            מה אני מציע❓
-          </h2>
-          <div className="gameContainer">
-            <div className="gameButton" style={{ color: colors.text} }>
-              <span className="text-lg leading-relaxed mb-4">
-                <p className="mb-5">
-                  ברגע שעובדים על משהו שאוהבים - לומדים הכי טוב, זה מה שאני מאמין.
-                <b> כשיש את הלמה מוצאים את האיך.</b>
-                </p>
-                <p className="mb-5">
-                אל תבינו אותי לא נכון. אפשר גם ללמוד מהרצאה ולשנן אותה שוב ושוב כמו תוכי.
-  אבל כולנו שונים, לומדים בקצבים אחרים, וברגע שצריך לבנות משהו שלא הופיע בהרצאה… נתקעים. לפעמים אפילו שוכחים לגמרי מה היה שם.               
-                </p>
-                <p className="mb-5">                    
-                    כשאני יוצר משהו משלי אני לא מעתיק ולא משחזר. אני בונה חיבורים אמיתיים במוח - כאלה שמחזיקים. השריר של העשייה מתחזק, כי אי-אפשר להרצות על הכל. בסופו של דבר, הילד צריך ללכת לבד.
-                </p>
-                <p className="mb-5">
-                  בהתחלה זה לפעמים נראה גדול מדי, במיוחד בפיתוח משחקים עם כל התפקידים השונים.
-                  זה יכול להוביל לקיפאון או לויתור בלי אפילו לנסות.
-                </p>
-                <p>
-                  בשביל זה אני כאן,
-                  אני רוצה ללוות אתכם ביצירת
-                  <b> המשחק שלכם</b>.
-                </p>
-                <p>
-                  אתם תיצרו, אני אכוון, אתם תלמדו תוך כדי עשייה בקצב
-                  <b> שלכם </b>
-                  ועל משהו שאתם אוהבים ורוצים.
-                </p>
-              </span>
-            </div>
-            </div>
-          </div>
-      </section>
-
       {/* syllabus Section */}
-      <section id="syllabus" className="px-6" style={{ backgroundColor: colors.background }}>
+      <section id="syllabus" className="py-20 px-6" style={{ backgroundColor: colors.background }}>
         <div className="max-w-4xl mx-auto">
           <h2 className="text-6xl font-bold mb-12 text-right" style={{ color: colors.text }}>
             מה אפשר ללמוד❓
@@ -369,6 +329,46 @@ const sections = [
             
           </div>
         </div>
+      </section>
+
+      {/* services Section */}
+      <section id="services" className="px-6" style={{ backgroundColor: colors.background }}>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-6xl font-bold mb-12 text-right" style={{ color: colors.text }}>
+            מה אני מציע❓
+          </h2>
+          <div className="gameContainer">
+            <div className="gameButton" style={{ color: colors.text} }>
+              <span className="text-lg leading-relaxed mb-4">
+                <p className="mb-5">
+                  ברגע שעובדים על משהו שאוהבים - לומדים הכי טוב, זה מה שאני מאמין.
+                <b> כשיש את הלמה מוצאים את האיך.</b>
+                </p>
+                <p className="mb-5">
+                אל תבינו אותי לא נכון. אפשר גם ללמוד מהרצאה ולשנן אותה שוב ושוב כמו תוכי.
+  אבל כולנו שונים, לומדים בקצבים אחרים, וברגע שצריך לבנות משהו שלא הופיע בהרצאה… נתקעים. לפעמים אפילו שוכחים לגמרי מה היה שם.               
+                </p>
+                <p className="mb-5">                    
+                    כשאני יוצר משהו משלי אני לא מעתיק ולא משחזר. אני בונה חיבורים אמיתיים במוח - כאלה שמחזיקים. השריר של העשייה מתחזק, כי אי-אפשר להרצות על הכל. בסופו של דבר, הילד צריך ללכת לבד.
+                </p>
+                <p className="mb-5">
+                  בהתחלה זה לפעמים נראה גדול מדי, במיוחד בפיתוח משחקים עם כל התפקידים השונים.
+                  זה יכול להוביל לקיפאון או לויתור בלי אפילו לנסות.
+                </p>
+                <p>
+                  בשביל זה אני כאן,
+                  אני רוצה ללוות אתכם ביצירת
+                  <b> המשחק שלכם</b>.
+                </p>
+                <p>
+                  אתם תיצרו, אני אכוון, אתם תלמדו תוך כדי עשייה בקצב
+                  <b> שלכם </b>
+                  ועל משהו שאתם אוהבים ורוצים.
+                </p>
+              </span>
+            </div>
+            </div>
+          </div>
       </section>
 
       {/* FAQ section */ }
