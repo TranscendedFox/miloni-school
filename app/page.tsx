@@ -134,8 +134,8 @@ const faqData = [
 const sections = [
   { id: "home", label: "ראשי" },
   { id: "about", label: "מי אני" },
-  { id: "services", label: "שירות" },
   { id: "syllabus", label: "מה לומדים" },
+  { id: "services", label: "שירות" },
   { id: "faq", label: "שאלות נפוצות" },
   { id: "contact", label: "צור קשר" },
 ]
